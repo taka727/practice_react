@@ -4,31 +4,43 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState([]);
 
+  const [inputValue, setInputValue] = useState("");
+
+  const addTodo = () => {
+    if (inputValue === "") return;
+    setTodos([...todos,inputValue]);
+
+    setInputValue("");
+  };
+
+  const deleteTodos = (index)=>{
+    const newTodos = [...todos];
+    newTodos.splice(index,1);
+    setTodos(newTodos);
+  }
+  
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div style={{padding: '20px',maxWidth: '300px',margin: '0 auto'}}>
+      <h1>簡易Todoアプリ</h1>
+      <input 
+        type="text"
+        value={inputValue}
+        onChange={(e)=> setInputValue(e.target.value)} 
+        placeholder='何をする？'
+        />
+        <button onClick={addTodo}>追加</button>
+        <ul>
+          {todos.map((todo,index)=>(
+            <li key={index}>{todo}
+            <button 
+            onClick={()=> deleteTodos(index)}
+            style={{marginLeft: '10px'}}>削除</button>
+            </li>
+          ))}
+        </ul>
+    </div>
   )
 }
 
