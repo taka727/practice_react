@@ -16,4 +16,5 @@ React　練習用リポジトリ兼gitとgitCLIの使い方を勉強する
 ## 作成物一覧
 |作成日|作成物|主な練習ネタ（内容）|一言メモ|
 |----|----|----|----|
-|2026/01/01|TODOアプリ|hogehoge|memomemo| 
+|(記入例)2026/01/01|TODOアプリ|hogehoge|memomemo|
+|2026/03/01|簡易TODOアプリ|useState,map関数,スプレッド構文|AndroidstudioでKotilinを使用してする開発の記法と似ていると思った|　 
